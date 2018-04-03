@@ -1,0 +1,3 @@
+const USER_INFO = 'USER_INFO'
+const LOADING='LOADING'
+export {USER_INFO,LOADING}
