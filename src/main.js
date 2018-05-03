@@ -11,6 +11,36 @@ import 'iview/dist/styles/iview.css';
 Vue.config.productionTip = false
 Vue.use(Subscribe);
 Vue.use(iview);
+
+
+
+import Exceptional from './common/plugin/MyExceptional'
+const exceptional=new Exceptional();
+let obj={
+  a:1,
+  errorHandler(e){
+    new Error('请实现')
+  },
+  catchError(a,b){
+    console.info(a+b)
+    arr[5]=7
+  },
+  catchAdd(){
+    arr.push(1)
+  }
+}
+obj=exceptional.init(obj);
+obj.catchError(1,2,()=>{
+  alert(1)
+})
+obj.catchAdd()
+
+
+
+
+
+
+
 /* eslint-disable no-new */
 router.afterEach(route => {
   if(route.meta&&route.meta.name){

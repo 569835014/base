@@ -1,5 +1,5 @@
 import BaseApi from './BaseApi'
-import {ABNORMAL,LOGIN_OUT} from '../../common/config/code'
+import {ABNORMAL,LOGIN_OUT,SUCCESS} from '../../common/config/code'
 import {Notice} from 'iview'
 import {symbolContext} from '../../decorator/decorator'
 class Api extends BaseApi {
@@ -57,16 +57,18 @@ class Api extends BaseApi {
     try {
       res = await this.axios(param.url, _config)
       res=(res&&res.data)?res.data:null;
+      console.info(res)
       if(!res){
         param.error ? param.error(res,param) : this.error(param,{message:"程序在开小差"})
       }else if (!res.state || ABNORMAL.includes(res.state)) {
         param.abnormal ? param.abnormal(param,res) : this.abnormal(param,res)
       }else if (LOGIN_OUT.includes(res.state)){
         this.loginOut();
-      }
-        else {
+      } else if(SUCCESS.includes(res.state)){
         (param.successNotice)?this.showNotice(param,res,'恭喜你','success'):'';
         param.success?param.success(res.data):''
+      }else{
+        param.error ? param.error(res,param) : this.error(param,{message:"程序在开小差"})
       }
     } catch (e) {
       console.error(e);
