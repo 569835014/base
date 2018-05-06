@@ -26,6 +26,12 @@ const router=new Router({
       name: 'about',
       auth:true,
       component: asyncImport('view/About','about')
+    },
+    {
+      path: '/test',
+      name: 'test',
+      auth:true,
+      component: asyncImport('view/test/Test','test')
     }
   ],
 })

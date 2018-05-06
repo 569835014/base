@@ -8,37 +8,16 @@ import Subscribe from '~common/plugin/Subscribe.js'
 import 'normalize.css'
 import iview from 'iview'
 import 'iview/dist/styles/iview.css';
+import SubjectFactory from './view/test/SubjectFactory'
+
 Vue.config.productionTip = false
 Vue.use(Subscribe);
 Vue.use(iview);
-
+Vue.use(SubjectFactory)
 
 
 import Exceptional from './common/plugin/MyExceptional'
 const exceptional=new Exceptional();
-let obj={
-  a:1,
-  errorHandler(e){
-    new Error('请实现')
-  },
-  catchError(a,b){
-    console.info(a+b)
-    arr[5]=7
-  },
-  catchAdd(){
-    arr.push(1)
-  }
-}
-obj=exceptional.init(obj);
-obj.catchError(1,2,()=>{
-  alert(1)
-})
-obj.catchAdd()
-
-
-
-
-
 
 
 /* eslint-disable no-new */
