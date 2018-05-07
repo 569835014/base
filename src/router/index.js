@@ -6,7 +6,7 @@ const router=new Router({
   routes: [
     {
       path:"/",
-      redirect:'/user'
+      redirect:'/test'
     },
     {
       path: '/user',
@@ -30,8 +30,7 @@ const router=new Router({
     {
       path: '/test',
       name: 'test',
-      auth:true,
-      component: asyncImport('view/test/Test','test')
+      component: asyncImport('view/subject/Test','test')
     }
   ],
 })
